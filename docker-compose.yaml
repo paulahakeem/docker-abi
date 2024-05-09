@@ -39,19 +39,19 @@ services:
       timeout: 10s
       retries: 3
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx-wordpress   
-    ports:
-      - 80:80
-    restart: unless-stopped
-    volumes:
-      - ./nginx-configuration/:/etc/nginx/conf.d/
-    depends_on:
-      - wordpress1
-      - wordpress2
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+  # nginx:
+  #   image: nginx:latest
+  #   container_name: nginx-wordpress   
+  #   ports:
+  #     - 80:80
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./nginx-configuration/:/etc/nginx/conf.d/
+  #   depends_on:
+  #     - wordpress1
+  #     - wordpress2
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:80"]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 3
