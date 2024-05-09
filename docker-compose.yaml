@@ -14,9 +14,9 @@ services:
       - /var/www/html/wp-content/:/var/www/html/wp-content/
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
+      interval: 10s
       timeout: 10s
-      retries: 3
+      retries: 2
 
   wordpress2:
     image: wordpress
@@ -33,9 +33,9 @@ services:
       - /var/www/html/wp-content/:/var/www/html/wp-content/
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
+      interval: 10s
       timeout: 10s
-      retries: 3
+      retries: 2
     depends_on:
       wordpress1:
         condition: service_healthy
@@ -55,6 +55,6 @@ services:
         condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
+      interval: 10s
       timeout: 10s
-      retries: 3
+      retries: 2
