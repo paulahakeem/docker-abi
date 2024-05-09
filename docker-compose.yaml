@@ -21,19 +21,16 @@ services:
   wordpress2:
     image: wordpress
     restart: unless-stopped
-    container_name: wordpress2
+    container_name: wordpress1
     environment:
       WORDPRESS_DB_HOST: 10.0.3.212
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpressuser
       WORDPRESS_DB_PASSWORD: Paula123@
     ports:
-      - "8081:80"
+      - "8080:80"
     volumes:
       - /var/www/html/wp-content/:/var/www/html/wp-content/
-    depends_on:
-       wordpress1:
-         condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80"]
       interval: 30s
