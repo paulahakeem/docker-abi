@@ -1,0 +1,22 @@
+upstream wordpress {
+    ip_hash;
+    server wordpress1 weight=1;
+    server wordpress2 weight=1;
+
+}
+
+server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        proxy_pass http://wordpress;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Enable sticky sessions using a cookie
+        sticky cookie srv_id expires=1h domain=localhost;
+    }
+}
