@@ -23,7 +23,7 @@ services:
     restart: unless-stopped
     container_name: wordpress2
     environment:
-      WORDPRESS_DB_HOST: 10.0.3.212
+      WORDPRESS_DB_HOST: 10.0.3.185
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpressuser
       WORDPRESS_DB_PASSWORD: Paula123@
